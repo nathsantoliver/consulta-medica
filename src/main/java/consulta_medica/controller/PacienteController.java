@@ -16,12 +16,12 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<Iterable<Paciente>> buscarTodosPacientes() {
         return ResponseEntity.ok(pacienteService.buscarTodosPacientes());
     }
 
-    @GetMapping("/{pacienteId}")
+    @GetMapping("/{pacCpf}")
     public ResponseEntity<Optional<Paciente>> buscarPacientePorId(@PathVariable String pacCpf) {
         return ResponseEntity.ok(pacienteService.buscarPacientePorId(pacCpf));
     }
@@ -32,7 +32,7 @@ public class PacienteController {
         return ResponseEntity.ok(novoPaciente);
     }
 
-    @DeleteMapping("/{pacienteId}")
+    @DeleteMapping("/{pacCpf}")
     public ResponseEntity<Void> deletarPaciente(@PathVariable String pacCpf) {
         pacienteService.deletarPaciente(pacCpf);
         return ResponseEntity.ok().build();

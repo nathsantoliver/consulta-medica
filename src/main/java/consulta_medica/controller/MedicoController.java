@@ -15,7 +15,7 @@ public class MedicoController {
     @Autowired
     private MedicoService medicoService;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseEntity<Iterable<Medico>> buscarTodosMedicos() {
         return ResponseEntity.ok(medicoService.buscarTodosMedicos());
     }
