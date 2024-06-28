@@ -13,8 +13,6 @@ public interface PacienteService {
 
     void cadastrarPaciente(NovoPaciente novoPaciente);
 
-    void atualizarPaciente(String pacCpf, Paciente paciente);
-
     void deletarPaciente(String pacCpf);
 
 }

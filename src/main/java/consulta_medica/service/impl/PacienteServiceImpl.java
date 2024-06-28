@@ -34,21 +34,11 @@ public class PacienteServiceImpl implements PacienteService {
         paciente.setPacCpf(novoPaciente.getPacCpf());
         paciente.setPacTelefone(novoPaciente.getPacTelefone());
 
-        pacienteRepository.save(paciente);
-    }
-
-    @Override
-    public void atualizarPaciente(String pacCpf, Paciente paciente) {
-        for(Paciente p : buscarTodosPacientes()) {
-            if(Objects.equals(p.getPacCpf(), paciente.getPacCpf())) {
-                p.setPacCpf(paciente.getPacCpf());
-                p.setPacNome(paciente.getPacNome());
-                p.setPacTelefone(paciente.getPacTelefone());
-
-                pacienteRepository.save(p);
-                break;
-            }
+        if(pacienteRepository.existsById(paciente.getPacCpf())) {
+            throw new IllegalArgumentException("Este CPF já está cadastrado.");
         }
+
+        pacienteRepository.save(paciente);
     }
 
     @Override

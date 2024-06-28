@@ -32,12 +32,6 @@ public class PacienteController {
         return ResponseEntity.ok(novoPaciente);
     }
 
-    @PutMapping("/{pacienteId}")
-    public ResponseEntity<Paciente> atualizarPaciente(@PathVariable String pacCpf, @RequestBody Paciente paciente) {
-        pacienteService.atualizarPaciente(pacCpf, paciente);
-        return ResponseEntity.ok(paciente);
-    }
-
     @DeleteMapping("/{pacienteId}")
     public ResponseEntity<Void> deletarPaciente(@PathVariable String pacCpf) {
         pacienteService.deletarPaciente(pacCpf);
