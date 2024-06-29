@@ -1,0 +1,1 @@
+web: java -jar build/libs/consulta-medica-0.0.1-SNAPSHOT.jar
