@@ -1,5 +1,6 @@
 package consulta_medica.service.impl;
 
+import consulta_medica.controller.exception.GlobalExceptionHandler;
 import consulta_medica.dto.NovaConsulta;
 import consulta_medica.model.Consulta;
 import consulta_medica.model.Medico;
@@ -44,8 +45,9 @@ public class ConsultaServiceImpl implements ConsultaService {
         Consulta consulta = new Consulta();
 
         consulta.setDataConsulta(LocalDateTime.now());
-        consulta.setMedico(medico.orElse(null));
-        consulta.setPaciente(paciente.orElse(null));
+        consulta.setEspecialidade(medico.get().getEspecialidade());
+        consulta.setMedico(medico.get().getMedNome());
+        consulta.setPaciente(paciente.get().getPacNome());
         consulta.setPrescricao(novaConsulta.getPrescricao());
 
         consultaRepository.save(consulta);

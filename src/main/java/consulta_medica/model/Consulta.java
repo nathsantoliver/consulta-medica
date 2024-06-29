@@ -14,11 +14,14 @@ public class Consulta {
     @Column(name = "data_hora")
     private LocalDateTime dataConsulta;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Medico medico;
+    @Enumerated(EnumType.STRING)
+    private Especialidade especialidade;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Paciente paciente;
+    @Column(name = "medico")
+    private String medico;
+
+    @Column(name = "paciente")
+    private String paciente;
 
     @Column(columnDefinition = "VARCHAR(500)")
     private String prescricao;
@@ -39,19 +42,27 @@ public class Consulta {
         this.dataConsulta = dataConsulta;
     }
 
-    public Medico getMedico() {
+    public Especialidade getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
+    }
+
+    public String getMedico() {
         return medico;
     }
 
-    public void setMedico(Medico medico) {
+    public void setMedico(String medico) {
         this.medico = medico;
     }
 
-    public Paciente getPaciente() {
+    public String getPaciente() {
         return paciente;
     }
 
-    public void setPaciente(Paciente paciente) {
+    public void setPaciente(String paciente) {
         this.paciente = paciente;
     }
 
